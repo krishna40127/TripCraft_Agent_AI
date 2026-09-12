@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TripCraft — Multi-Agent AI Travel Planner</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">🧭</span>
+        <div>
+          <h1>TripCraft</h1>
+          <p>Multi-agent AI travel planner — Supervisor · MCP Weather · Guardrails · Human-in-the-loop</p>
+        </div>
+      </div>
+      <span id="provider-badge" class="badge">provider: …</span>
+    </header>
+
+    <main class="layout">
+      <section class="chat-panel">
+        <div id="chat-log" class="chat-log">
+          <div class="msg msg-assistant">
+            <div class="msg-bubble">
+              Tell me about the trip you want to plan — destination, dates or month, group size,
+              budget, and interests. Example:
+              <em>"Plan a 5-day trip to Goa for 2 people in December, mid-range budget, we like
+              beaches and local food, flying from Delhi."</em>
+            </div>
+          </div>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+          <textarea id="chat-input" placeholder="Describe the trip you want to plan…" rows="3" required></textarea>
+          <button type="submit" id="send-btn">Plan Trip</button>
+        </form>
+      </section>
+
+      <section class="draft-panel">
+        <div class="draft-header">
+          <h2>Draft Trip Plan</h2>
+          <span id="status-pill" class="status-pill status-idle">idle</span>
+        </div>
+
+        <div id="draft-content" class="draft-content">
+          <p class="placeholder">Your draft itinerary will appear here once TripCraft's agents finish
+          researching weather, itinerary, flights and hotels for your trip.</p>
+        </div>
+
+        <div id="approval-controls" class="approval-controls hidden">
+          <button id="approve-btn" class="btn btn-approve">✅ Approve</button>
+          <button id="revise-toggle-btn" class="btn btn-revise">✏️ Request Changes</button>
+          <div id="revise-form" class="revise-form hidden">
+            <textarea id="revise-feedback" placeholder="What should change? e.g. 'swap day 3 for something more relaxed, budget is too high'" rows="2"></textarea>
+            <button id="revise-submit-btn" class="btn btn-approve">Send revision</button>
+          </div>
+        </div>
+
+        <div id="finalized-controls" class="approval-controls hidden">
+          <button id="plan-another-btn" class="btn btn-revise">🧭 Plan Another Trip</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      TripCraft drafts estimates only — no real bookings or payments are made. Follows the
+      Supervisor + MCP + Guardrails + HITL architecture pattern.
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
